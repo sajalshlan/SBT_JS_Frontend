@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ethers": "^6.3.0",
+    "nft.storage": "^7.0.3"
+  }
+}

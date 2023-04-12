@@ -1,0 +1,3 @@
+.env
+ethers.esm.min.js
+node_modules

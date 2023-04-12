@@ -1,0 +1,143 @@
+@font-face {
+  font-family: myFont;
+  src: url(pixel.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* text-align: center; */
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: myFont;
+  /* font-family: 'VT323', monospace; */
+  background-image: url(sbt-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  letter-spacing: 3px;
+}
+
+.connect-btn {
+  display: inline-block;
+  background-color: #563264;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 9px;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  color: white;
+  font-size: larger;
+  /* letter-spacing: 5px; */
+}
+.heading img {
+  height: auto;
+  max-width: 10%;
+}
+
+.heading h1 {
+  margin-top: 20px;
+}
+
+.container {
+  background-color: rgba(238, 1, 255, 0.718);
+  /* transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%; */
+  display: flex;
+  padding: 50px 35px;
+  max-width: 800px;
+  border-radius: 15px;
+  outline: 5px dashed white;
+  outline-offset: -25px;
+}
+
+/* left side handling */
+.left {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  /* padding: 0 25px; */
+}
+.photo img {
+  height: auto;
+  max-width: 50%;
+  border: 4px solid black;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.grp-roll {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.rno {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  border: 3px solid white;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: large;
+}
+
+.roll {
+  /* font-size: large; */
+  margin-left: 10px;
+}
+
+/* right side handling  */
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.h1 {
+  letter-spacing: 7px;
+}
+
+.sub-div {
+  display: flex;
+  text-align: start;
+  margin: 7px 0;
+  font-size: large;
+}
+
+.label {
+  /* margin-top: 5px; */
+  /* font-size: large; */
+}
+
+.sign-div img {
+  height: auto;
+  max-width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer h1 {
+  margin-top: 80px;
+  color: white;
+  font-size: large;
+  letter-spacing: 7px;
+}
