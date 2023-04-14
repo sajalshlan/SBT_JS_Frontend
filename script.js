@@ -118,7 +118,9 @@ const contractABI = [
 ];
 
 let walletAddress;
-
+let metadata;
+let photo;
+let imageP;
 //connecting wallet
 const connectBtn = document.querySelector(".connect-btn");
 connectBtn.addEventListener("click", async () => {
@@ -135,7 +137,7 @@ const connect = async () => {
     console.log("connected to metamask!");
     console.log(window.ethereum);
     walletAddress = window.ethereum.selectedAddress;
-    console.log(walletAddress);
+    console.log(`Connected Wallet Address: ${walletAddress}`);
 
     connectBtn.innerHTML = "Connected";
   } else {
@@ -144,19 +146,18 @@ const connect = async () => {
 
   //getting provider, signer and contract instance
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-  console.log(provider);
+  // console.log(provider);
 
   // const signer = new ethers.Wallet(import.meta.env.VITE_PRIVATE_KEY, provider);
   const signer = provider.getSigner();
-  console.log(signer);
+  // console.log(signer);
 
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
-
-  console.log(contract);
+  // console.log(contract);
 
   //task 3 - got the wallet address and the contract instance, now getting the cid
   const cid = await contract.searchStudent(walletAddress);
-  console.log(cid);
+  console.log(`Associated cid: ${cid}`);
 
   // await fetch(`https://api.nft.storage/${cid}`, {
   //   headers: {
@@ -173,7 +174,8 @@ const connect = async () => {
     })
     .then((data) => {
       console.log(data);
-      const metadata = data.properties;
+      metadata = data.properties;
+      photo = data.image;
       if (!data.properties) {
         throw new Error("Metadata not found in response.");
       }
@@ -181,19 +183,49 @@ const connect = async () => {
     })
     .catch((error) => console.error(error));
 
-  // await fetch("https://api.nft.storage", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer ${import.meta.env.VITE_NFTSTORAGE_API_KEY}`,
-  //   },
-  //   body: JSON.stringify({
-  //     cid: `${cid}`,
-  //   }),
-  // })
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data))
-  //   .catch((err) => console.log(err));
+  //now displaying the properties in the html
+  const rollNumber = document.getElementById("roll-no");
+  const dob = document.getElementById("dob");
+  const branch = document.getElementById("branch");
+  const college = document.getElementById("college");
+  const name = document.getElementById("name");
+  const image = document.getElementById("image");
 
-  console.log("hua?");
+  //image part
+
+  await fetch(`https://nftstorage.link/ipfs/${photo["/"]}?format=dag-json`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      imageP = data.Links[0].Name;
+      if (!data) {
+        throw new Error("Metadata not found in response.");
+      }
+      // console.log(metadata);
+    })
+    .catch((error) => console.error(error));
+
+  rollNumber.innerHTML = metadata.sRollno;
+  dob.innerHTML = metadata.sDob;
+  branch.innerHTML = metadata.sBranch;
+  name.innerHTML = metadata.sName;
+
+  image.src = `https://nftstorage.link/ipfs/${photo["/"]}/${imageP}`;
+
+  // image.src = `https://ipfs.io/ipfs/${photo["/"]}`;
+  // image.src = `https://nftstorage.link/ipfs/${metadata.sPhoto["/"]}`;
+  // console.log(`https://nftstorage.link/ipfs/${metadata.sPhoto["/"]}`);
 };
+/*
+sAccount: "0x416195cCEb99a3d846900FeDEdeF9D9D3e8c4F3d"
+sAddress: "3/462, Malviya Nagar"
+sDob: "45"
+sName: "klaus"
+sPhoto: {/:'bafybeiggaksenzxq6qdwe2hdmdm4b53i5o673livwfhxho3mo2nrm57ecy'}
+sRollno: "20uec038"
+*/
