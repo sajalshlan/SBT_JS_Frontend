@@ -26,18 +26,30 @@ body {
 }
 
 .connect-btn {
+  margin: 35px 0 0 0;
   display: inline-block;
-  background-color: #563264;
+  border: none;
+  outline: none;
+  /* background-color: #563264; */
+  background-color: rgba(238, 1, 255, 0.718);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   color: white;
   padding: 12px;
   text-align: center;
   border-radius: 9px;
 }
 
+.connect-btn:hover {
+  background-color: #263264;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .heading {
   display: flex;
   justify-content: center;
-  margin: 50px 0;
+  margin: 20px 0;
   color: white;
   font-size: larger;
   /* letter-spacing: 5px; */
@@ -136,7 +148,7 @@ body {
 }
 
 .footer h1 {
-  margin-top: 80px;
+  margin-top: 50px;
   color: white;
   font-size: large;
   letter-spacing: 7px;
