@@ -2,5 +2,25 @@
   "dependencies": {
     "ethers": "^6.3.0",
     "nft.storage": "^7.0.3"
-  }
+  },
+  "name": "sbt",
+  "description": "The font file in this archive was created using Fontstruct the free, online font-building tool.\r This font was created by “Houlaiziaa”.\r This font has a homepage where this archive and other versions may be found: https://fontstruct.com/fontstructions/show/638309",
+  "version": "1.0.0",
+  "main": "ethers.esm.min.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sajal24/SBT_JS_Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sajal24/SBT_JS_Frontend/issues"
+  },
+  "homepage": "https://github.com/Sajal24/SBT_JS_Frontend#readme"
 }
